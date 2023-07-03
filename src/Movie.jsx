@@ -1,5 +1,6 @@
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
+import Stars from "./Stars";
 
 export default function Movie(props) {
   return (
@@ -30,7 +31,16 @@ export default function Movie(props) {
           </a>
         </div>
       </Card.Body>
-      <h4>Accordion with reviews goes here</h4>
+      <Card.Footer>
+        <Accordion>
+          <Accordion.Item eventKey="0">
+            <Accordion.Header>Reviews</Accordion.Header>
+            <Accordion.Body>
+              <Stars />
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+      </Card.Footer>
     </Card>
   );
 }
