@@ -1,10 +1,11 @@
+/*Hero Component*/
+
 .hero {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-around;
   background-color: #040404;
-  color: rgb(249, 135, 192);
   padding: 1rem 0rem;
   border-bottom: 2px outset #838282;
 }
@@ -31,17 +32,17 @@
 }
 
 .hero img {
-  border-radius: 1rem;
-  box-shadow: 5px 5px 5px 0px rgba(140, 140, 140, 0.75);
-  border: solid 1px black;
   height: 8rem;
 }
 
+/*App main component*/
 main {
   display: flex;
   flex-wrap: wrap;
   background-image: url("../images/background.jpg");
 }
+
+/*Movie Component*/
 .movie-card {
   flex: 25%;
   margin: 2rem;
@@ -58,8 +59,10 @@ main {
 .movie-details {
   font-size: small;
 }
+
 .movie-title,
 .movie-year {
+  font-family: "Tilt Neon";
   text-align: center;
 }
 
@@ -72,8 +75,36 @@ main {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  font-family: "Tilt Neon";
+  font-size: 1.25rem;
 }
 
+/*Review Component*/
+.review-form input {
+  margin-bottom: 1em;
+}
+
+.form-button {
+  margin-top: 1em;
+  border-radius: 5px;
+  background-color: rgb(249, 135, 192);
+  box-shadow: 2px 2px 2px 0px rgba(2, 2, 2, 0.75);
+  width: 100%;
+}
+
+/* .review-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+} */
+
+.review-items {
+  margin: 1em;
+  width: 100%;
+  /* justify-self: left; */
+}
+
+/*Responsive elements*/
 @media (max-width: 1000px) {
   .movie-card {
     flex: 40%;

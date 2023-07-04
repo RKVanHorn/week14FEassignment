@@ -1,11 +1,12 @@
-import collage from "../images/collage.jpg";
+import popcorn from "../images/popcorn.png";
+import driveIn from "../images/driveIn.png";
 
 export default function Hero() {
   return (
     <header className="hero">
-      <img src={collage} />
+      <img src={popcorn} />
       <h1 className="glow">John Hughes Movie Reviews</h1>
-      <img src={collage} />
+      <img src={driveIn} />
     </header>
   );
 }

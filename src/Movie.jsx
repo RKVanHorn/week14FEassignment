@@ -1,21 +1,19 @@
 import Card from "react-bootstrap/Card";
 import Accordion from "react-bootstrap/Accordion";
-import Stars from "./Stars";
+import Review from "./Review";
 
 export default function Movie(props) {
   return (
-    <Card bg="dark" text="white" border="light" className="movie-card">
+    <Card bg="dark" text="white" className="movie-card">
       <Card.Img variant="top" src={props.image} />
       <Card.Body>
         <Card.Title className="movie-title">{props.title}</Card.Title>
-        <Card.Subtitle className="movie-year">
-          Released in {props.year}
-        </Card.Subtitle>
+        <Card.Subtitle className="movie-year">{props.year}</Card.Subtitle>
         <hr />
         <Card.Text className="movie-details">
-          <b>Directed by:</b> {props.director}
+          <b>Director:</b> {props.director}
           <br />
-          <b>Written by:</b> {props.writer}
+          <b>Writer:</b> {props.writer}
           <br />
           <b>Starring:</b> {props.actors}
           <br />
@@ -24,7 +22,7 @@ export default function Movie(props) {
         </Card.Text>
         <div className="links">
           <a href={props.imdb} target="_blank">
-            IMDb page
+            IMDb
           </a>
           <a href={props.rotten} target="_blank">
             Rotten Tomatoes
@@ -34,9 +32,9 @@ export default function Movie(props) {
       <Card.Footer>
         <Accordion>
           <Accordion.Item eventKey="0">
-            <Accordion.Header>Reviews</Accordion.Header>
+            <Accordion.Header>Reviews for {props.title}</Accordion.Header>
             <Accordion.Body>
-              <Stars />
+              <Review />
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
