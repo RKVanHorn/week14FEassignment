@@ -80,8 +80,24 @@ main {
 }
 
 /*Review Component*/
+.reviews-modal .modal-content {
+  background-color: #6c757d;
+  color: white;
+  font-family: "Tilt Neon";
+}
+
+.the-modal {
+  display: flex;
+  justify-content: center;
+}
+.review-form {
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+}
 .review-form input {
   margin-bottom: 1em;
+  width: 50%;
 }
 
 .form-button {

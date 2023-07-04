@@ -1,6 +1,5 @@
 import Card from "react-bootstrap/Card";
-import Accordion from "react-bootstrap/Accordion";
-import Review from "./Review";
+import ModalSection from "./ModalSection";
 
 export default function Movie(props) {
   return (
@@ -30,14 +29,7 @@ export default function Movie(props) {
         </div>
       </Card.Body>
       <Card.Footer>
-        <Accordion>
-          <Accordion.Item eventKey="0">
-            <Accordion.Header>Reviews for {props.title}</Accordion.Header>
-            <Accordion.Body>
-              <Review />
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
+        <ModalSection title={props.title} />
       </Card.Footer>
     </Card>
   );

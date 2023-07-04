@@ -1,34 +1,28 @@
-import ReactStars from "react-rating-stars-component";
 import React from "react";
+import ReactStars from "react-rating-stars-component";
+import ReviewData from "./ReviewData";
+import ReviewList from "./ReviewList";
+// import ReviewForm from "./ReviewForm";
 
 export default function Review() {
-  const [reviewData, setReviewData] = React.useState([
-    {
-      id: 1,
-      userName: "Rachel",
-      userReview: "My favorite John Hughes movie!",
-      rating: "5⭐",
-    },
-    {
-      id: 2,
-      userName: "Jeremy",
-      userReview: "Not my favorite John Hughes movie.",
-      rating: "1⭐",
-    },
-  ]);
+  const [reviewData, setReviewData] = React.useState(ReviewData);
 
+  // Give the stars a variable to use in state
   let starRating;
-
   const ratingChanged = (newRating) => {
     // console.log(`${newRating}⭐`);
     starRating = `${newRating}⭐`;
   };
 
-  const user = React.useRef(null);
-  const review = React.useRef(null);
+  // Set up a way to give each review a unique id
   let userId = 3;
 
-  function handleSubmit(event) {
+  // Variables to hold the current state
+  const user = React.useRef(null);
+  const review = React.useRef(null);
+
+  // function that happens when the form is submitted
+  function saveReview(event) {
     event.preventDefault();
     setReviewData((prevData) => [
       ...prevData,
@@ -46,52 +40,34 @@ export default function Review() {
 
   return (
     <div>
-      <form className="review-form" onSubmit={handleSubmit}>
+      <form className="review-form" onSubmit={saveReview}>
         <input
           type="text"
           placeholder="Enter your name"
           ref={user}
           id="userName"
+          value={reviewData.userName}
           required
         />
-        <input
-          type="text"
+        <textarea
           placeholder="Enter your review"
           ref={review}
           id="review"
+          value={reviewData.userReview}
           required
         />
         <ReactStars
           count={5}
           onChange={ratingChanged}
           size={24}
+          color="#ffffff"
           activeColor="#ffd700"
+          isHalf={true}
           name="rating"
         />
         <button className="form-button">Submit your review</button>
       </form>
-      <div className="review-list">
-        {reviewData.map((review) => (
-          <p className="review-items" key={review.id}>
-            {review.userName} says "{review.userReview}" - {review.rating}
-          </p>
-        ))}
-      </div>
+      <ReviewList reviews={reviewData} />
     </div>
   );
 }
-
-// function handleChange(event) {
-//   const { name, value } = event.target;
-//   setReviewData((prevData) => {
-//     return {
-//       ...prevData,
-//       [name]: name === "rating" ? `${newRating} ⭐` : value,
-//     };
-//   });
-//   console.log(`On change ${reviewData}`);
-// }
-// function handleSubmit(event) {
-//   event.preventDefault();
-//   console.log(`On submit ${reviewData}`);
-// }
