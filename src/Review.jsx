@@ -1,11 +1,21 @@
 import React from "react";
 import ReactStars from "react-rating-stars-component";
-import ReviewData from "./ReviewData";
+// import ReviewData from "./ReviewData";
 import ReviewList from "./ReviewList";
-// import ReviewForm from "./ReviewForm";
 
 export default function Review() {
-  const [reviewData, setReviewData] = React.useState(ReviewData);
+  const [reviewData, setReviewData] = React.useState([
+    {
+      userName: "Rachel",
+      userReview: "My favorite John Hughes movie!",
+      rating: "5⭐",
+    },
+    {
+      userName: "Jeremy",
+      userReview: "Not my favorite John Hughes movie.",
+      rating: "1⭐",
+    },
+  ]);
 
   // Give the stars a variable to use in state
   let starRating;
@@ -14,9 +24,6 @@ export default function Review() {
     starRating = `${newRating}⭐`;
   };
 
-  // Set up a way to give each review a unique id
-  let userId = 3;
-
   // Variables to hold the current state
   const user = React.useRef(null);
   const review = React.useRef(null);
@@ -24,18 +31,18 @@ export default function Review() {
   // function that happens when the form is submitted
   function saveReview(event) {
     event.preventDefault();
+    console.log(reviewData);
     setReviewData((prevData) => [
       ...prevData,
       {
-        id: userId,
         userName: user.current.value,
         userReview: review.current.value,
         rating: !starRating ? "0⭐" : starRating,
       },
     ]);
+    console.log(reviewData);
     user.current.value = "";
     review.current.value = "";
-    userId++;
   }
 
   return (
@@ -45,14 +52,16 @@ export default function Review() {
           type="text"
           placeholder="Enter your name"
           ref={user}
-          id="userName"
+          // name="userName"
+          // id="userName"
           value={reviewData.userName}
           required
         />
         <textarea
           placeholder="Enter your review"
           ref={review}
-          id="review"
+          // name="userReview"
+          // id="review"
           value={reviewData.userReview}
           required
         />
@@ -63,7 +72,6 @@ export default function Review() {
           color="#ffffff"
           activeColor="#ffd700"
           isHalf={true}
-          name="rating"
         />
         <button className="form-button">Submit your review</button>
       </form>
