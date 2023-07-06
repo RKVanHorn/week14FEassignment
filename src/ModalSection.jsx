@@ -4,6 +4,7 @@ import React from "react";
 import Review from "./Review";
 
 export default function ModalSection(props) {
+  // console.log(props.reviewData);
   const [show, setShow] = React.useState(false);
 
   const handleClose = () => setShow(false);
@@ -25,7 +26,10 @@ export default function ModalSection(props) {
           <Modal.Title>{props.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Review />
+          <Review
+            reviewData={props.reviewData}
+            setReviewData={props.setReviewData}
+          />
         </Modal.Body>
       </Modal>
     </div>
