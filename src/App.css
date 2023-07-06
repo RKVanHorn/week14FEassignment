@@ -108,16 +108,24 @@ main {
   width: 100%;
 }
 
-/* .review-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-} */
-
 .review-items {
   margin: 1em;
   width: 100%;
-  /* justify-self: left; */
+}
+
+/*Stars*/
+.stars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+}
+input[type="radio"] {
+  display: none;
+}
+.star {
+  cursor: pointer;
+  transition: color 200ms;
 }
 
 /*Responsive elements*/

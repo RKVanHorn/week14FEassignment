@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import ModalSection from "./ModalSection";
+import Stars from "./Stars";
 
 export default function Movie(props) {
   const [reviewData, setReviewData] = React.useState([
