@@ -4,10 +4,8 @@ import Stars from "./Stars";
 
 export default function Review(props) {
   const [starRating, setStarRating] = React.useState(null);
-
-  // Variables to hold the current state
-  const user = React.useRef(null);
-  const review = React.useRef(null);
+  const [userValue, setUserValue] = React.useState("");
+  const [reviewValue, setReviewValue] = React.useState("");
 
   // function that happens when the form is submitted
   function saveReview(event) {
@@ -15,14 +13,15 @@ export default function Review(props) {
     props.setReviewData((prevData) => [
       ...prevData,
       {
-        userName: user.current.value,
-        userReview: review.current.value,
+        userName: userValue,
+        userReview: reviewValue,
         rating: !starRating ? "0⭐" : starRating + "⭐",
       },
     ]);
     // console.log(reviewData);
-    user.current.value = "";
-    review.current.value = "";
+    setUserValue("");
+    setReviewValue("");
+    setStarRating(null);
   }
 
   return (
@@ -31,16 +30,16 @@ export default function Review(props) {
         <input
           type="text"
           placeholder="Enter your name"
-          ref={user}
           name="userName"
-          value={props.reviewData.userName}
+          value={userValue}
+          onChange={(event) => setUserValue(event.target.value)}
           required
         />
         <textarea
           placeholder="Enter your review"
-          ref={review}
           name="userReview"
-          value={props.reviewData.userReview}
+          value={reviewValue}
+          onChange={(event) => setReviewValue(event.target.value)}
           required
         />
         <Stars handleClick={setStarRating} rating={starRating} />

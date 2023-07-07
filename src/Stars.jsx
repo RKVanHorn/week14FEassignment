@@ -8,7 +8,7 @@ export default function Stars(props) {
       {[...Array(5)].map((star, index) => {
         const ratingValue = index + 1;
         return (
-          <label>
+          <label key={ratingValue}>
             <input
               type="radio"
               name="rating"

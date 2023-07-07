@@ -1,5 +1,5 @@
 import "./App.css";
-import data from "./MovieList";
+import data from "./movieData";
 import Hero from "./Hero";
 import Movie from "./Movie";
 
